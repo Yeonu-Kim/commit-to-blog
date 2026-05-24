@@ -23,7 +23,9 @@ export const useSlidingPanel = () => {
 
   const [dropdownLeft, setDropdownLeft] = useState(0);
   const [dropdownWidth, setDropdownWidth] = useState(PANEL_SIZES.topic.width);
-  const [dropdownHeight, setDropdownHeight] = useState(PANEL_SIZES.topic.height);
+  const [dropdownHeight, setDropdownHeight] = useState(
+    PANEL_SIZES.topic.height
+  );
   const [indicatorLeft, setIndicatorLeft] = useState(0);
   const [indicatorWidth, setIndicatorWidth] = useState(0);
 
@@ -63,7 +65,7 @@ export const useSlidingPanel = () => {
         ? buttonLeft
         : Math.max(
             0,
-            Math.min(containerRect.width - panelWidth, buttonRight - panelWidth),
+            Math.min(containerRect.width - panelWidth, buttonRight - panelWidth)
           );
 
     return {
@@ -111,7 +113,7 @@ export const useSlidingPanel = () => {
   };
 
   const handleDropdownTransitionEnd = (
-    e: React.TransitionEvent<HTMLDivElement>,
+    e: React.TransitionEvent<HTMLDivElement>
   ) => {
     if (e.propertyName === 'left' && dropdownPhase === 'opening') {
       setDropdownPhase('idle');
