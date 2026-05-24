@@ -1,3 +1,5 @@
+import { PostSection } from '../feature/post/post-section';
+
 export const PostPage = () => {
-  return <div>Post</div>;
+  return <PostSection />;
 };
