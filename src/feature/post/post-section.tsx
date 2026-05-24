@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import postsData from '../../data/blogs.json';
 import categoriesData from '../../data/category.json';
-import type { Post } from '../../domain/post';
-import { type DateRange, FilterBar } from './filter-bar';
+import type { DateRange, Post } from '../../domain/post';
+import { FilterBar } from './filter-bar';
 import { PostCard } from './post-card';
 
 const allPosts: Post[] = postsData.posts;

@@ -7,3 +7,5 @@ export type Post = {
   url: string;
   categories: string[];
 };
+
+export type DateRange = { start: string | null; end: string | null };

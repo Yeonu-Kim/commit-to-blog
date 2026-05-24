@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-export type DateRange = { start: string | null; end: string | null };
+import type { DateRange } from '../../domain/post';
 
 const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
 

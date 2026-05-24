@@ -1,17 +1,7 @@
-import { DateModal, type DateRange } from './date-modal';
+import type { DateRange } from '../../domain/post';
+import { DateModal } from './date-modal';
 import { TopicModal } from './topic-modal';
 import { ANIMATION, useSlidingPanel } from './use-sliding-panel';
-
-export type { DateRange };
-
-type Props = {
-  categories: string[];
-  selectedCategories: string[];
-  dateRange: DateRange;
-  onCategoriesChange: (cats: string[]) => void;
-  onDateRangeChange: (range: DateRange) => void;
-  onSearch: () => void;
-};
 
 export const FilterBar = ({
   categories,
@@ -20,7 +10,14 @@ export const FilterBar = ({
   onCategoriesChange,
   onDateRangeChange,
   onSearch,
-}: Props) => {
+}: {
+  categories: string[];
+  selectedCategories: string[];
+  dateRange: DateRange;
+  onCategoriesChange: (cats: string[]) => void;
+  onDateRangeChange: (range: DateRange) => void;
+  onSearch: () => void;
+}) => {
   const {
     containerRef,
     pillRef,
@@ -43,12 +40,17 @@ export const FilterBar = ({
     close,
   } = useSlidingPanel();
 
-  const topicLabel =
-    selectedCategories.length === 0
-      ? null
-      : selectedCategories.length === 1
-        ? selectedCategories[0]
-        : `${selectedCategories[0]} 외 ${selectedCategories.length - 1}개`;
+  const getTopicLabel = (categories: string[]): string | null => {
+    if (categories.length === 0) {
+      return null;
+    }
+    if (categories.length === 1) {
+      return categories[0];
+    }
+    return `${categories[0]} 외 ${categories.length - 1}개`;
+  };
+
+  const topicLabel = getTopicLabel(selectedCategories);
 
   const dateLabel = dateRange.start
     ? `${dateRange.start} ~ ${dateRange.end ?? '…'}`
